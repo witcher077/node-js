@@ -1,0 +1,31 @@
+Configur ejs-
+
+1) ejs install
+npm i ejs
+
+2) configure ejs 
+
+app.set("view engine", "ejs");
+
+3) ek views folder Banao
+
+4) usme ejs files Banao
+
+5) send ki jagah render kro
+
+
+**** Static file setup karne ke liye 👍
+
+1) Create a folder called public
+
+2) Create Tree folders inside it images, stylesheets, javascrips.
+
+3) configure the express Static
+
+4) understand the path
+
+
+**** Error Handeling
+
+----------------------------------
+MiddleWare- A function which exicutes before any route.
