@@ -6,3 +6,15 @@ change username and email-
 show git details - 
     git config --list 
 
+git push files - 
+
+     git status
+     git add .
+     git commit -m "express session-cookies" 
+     git push origin main
+
+git change branch
+ 
+ git checkout -b my-feature
+
+
