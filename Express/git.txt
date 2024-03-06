@@ -1,0 +1,8 @@
+
+change username and email- 
+   git config --global user.name "witcher077"
+   git config --global user.email "ashokkumarma
+
+show git details - 
+    git config --list 
+
