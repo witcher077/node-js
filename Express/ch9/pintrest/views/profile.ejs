@@ -1,0 +1,80 @@
+<% include ./partials/header.ejs%>
+  <div class="container-profile">
+    <div class="card-profile ">
+      <form class="hidden" id="uploadform" action="/profileupload" method="post" enctype="multipart/form-data">
+       <input type="file" name="file" />
+      </form>
+      <div class="d-flex align-items-center justify-content-center mb-3">
+        <div id="uploadprofile" class="relative cursor-pointer">
+          <span  class="w-8 h-8 absolute bottom-6 right-12 rounded-full flex items-center justify-center bg-zinc-200">
+            <i class="ri-pencil-fill text-zinc-800"></i>
+          </span>
+          <div class="profile-picture m-3 bg-gray-300 text-center">
+
+            <img
+              src="/images/profileimg/<%=user.dp%>"
+              alt="Profile Picture">
+
+          </div>
+        </div>
+
+        <div>
+          <h2 class="name text-blue-800 font-black">
+            <%=user.fullname%>
+          </h2>
+          <h3 class="username font-bold text-red-800">
+            <%=user.username%><i class="ri-verified-badge-fill text-blue-800 ml-2"></i>
+          </h3>
+          <p class="tagline">
+            <%=user.email%>
+
+          </p>
+          <p class="description">Keep going.</p>
+          <a class="button cursor-pointer"><i class="ri-settings-5-fill"></i></a>
+        </div>
+      </div>
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <input class="bg-gray-200 rounded-full p-2 px-3" type="text" name="postText" placeholder="write about post" />
+        <input class="cursor-pointer" type="file" name="file" />
+        <input class="bg-gray-300 py-1 px-2 rounded-md" type="submit" value="upload" />
+      </form>
+    </div>
+  </div>
+
+  <div class="w-[95%] mx-auto">
+    <!-- <div class="flex items-start flex-wrap gap-2"> -->
+    <div class="container pt-3">
+      <%user.posts.forEach(function(post){ %>
+        <div class="box">
+          <a href="/images/uploads/<%=post.image%>">
+            <img class="rounded-0 rounded-top" src="/images/uploads/<%=post.image%>" style="width: 30rem;" alt="image">
+          <div class="mb-3 font-bold text-gray-700 dark:text-gray-400 text-center bg-white py-3 "><%=post.postText%></div></a>
+        </div>
+        
+        <% }) %>
+
+
+    </div>
+  </div>
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous">
+  </script>
+  <script>
+    document.querySelector("#uploadprofile").addEventListener('click',function(){
+    document.querySelector("#uploadform input").click()
+  })
+  document.querySelector("#uploadform input").addEventListener('change', function () {
+  document.querySelector("#uploadform").submit();
+})
+  </script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  <% include ./partials/footer.ejs%>

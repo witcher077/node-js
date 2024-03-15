@@ -45,6 +45,41 @@ npx nodemon
 
 Mongo DB----------------------------->
 
+intall mongoose - npm i mongoose
+
+const mongoose = require("mongoose");
+
+mongoose.connect("mongodb://127.0.0.1:27017/practice");
+
+const usersSchema = mongoose.Schema({
+  username: String,
+  name: String,
+  age: Number
+})
+
+module.exports=mongoose.model('user',usersSchema);
+
+
+ in another file - 
+ const userModel=require('./users');
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
+router.get('/create', async function(req, res, next) {
+ const createdusers= await userModel.create({
+    username:"Witcher007",
+    age:25,
+    name:"Ashok"
+  })
+  res.send(createdusers)
+});
+
+router.get('/allusers', async function(req, res, next) {
+  let all= await userModel.find();
+  res.send(all);
+});
 
 Cookeis-Session---------------------------->
 
@@ -62,6 +97,21 @@ Cookies :-
   read  - req.cookies;
   
   delete - res.clearCookie("movie");
-   
+
+Flash messages -  It allows to use msg of one route to another route
+
+
+   Authentication ---------->
+
+   install These Pakeges -
+     
+     npm i passport passport-local passport-local-mongoose mongoose express-session
+     Write app.js code first in app.js file and write after view engine and before logger
+
+     setup users.js then properly
+
+     in index.js try register first and the other codes as well
+
+
      
    
