@@ -56,8 +56,10 @@ router.get('/profile', isLoggedIn, async function (req, res, next) {
   res.render('profile',{user,nav:true});
 });
 
-router.get('/feed', isLoggedIn, function (req, res, next) {
-  res.render('feed',{nav:true});
+router.get('/feed', isLoggedIn, async function (req, res, next) {
+  const user =await userModel.findOne({username:req.session.passport.user})
+  const posts = await postModel.find().populate("user")
+  res.render('feed',{user,posts,nav:true});
 });
 router.post('/upload',isLoggedIn, upload.single("file"), isLoggedIn, async function (req, res, next) {
   if(!req.file){

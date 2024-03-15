@@ -1,9 +1,15 @@
 <% include ./partials/header.ejs%>
+
+
   <div class="container">
-
-
-
-
+    <%posts.forEach(function(post){ %>
+      <div class="box">
+        <a href="/images/uploads/<%=post.image%>">
+          <img class="rounded-0 rounded-top" src="/images/uploads/<%=post.image%>" style="width: 30rem;" alt="image">
+        <div class="mb-3 font-bold text-gray-700 dark:text-gray-400 text-center bg-white py-3 "><%=post.postText%></div></a>
+      </div>
+      
+      <% }) %>
     <div class="box">
       <a href="ttps://oriontralelblog.com/wp-content/uploads/2019/08/IMG_6310.jpg">
         <img src="https://oriontravelblog.com/wp-content/uploads/2019/08/IMG_6310.jpg" alt="image"></a>
